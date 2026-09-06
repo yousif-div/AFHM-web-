@@ -1,0 +1,1 @@
+<div class="table"><table><thead><tr><th>Teacher</th><th>Reports</th><th>Evaluations</th><th>Average score</th><th>Average feedback</th></tr></thead><tbody>@foreach($teachers as $t)<tr><td>{{$t['name']}}</td><td>{{$t['reports']}}</td><td>{{$t['evaluations']}}</td><td>{{$t['average_score']?:'—'}}</td><td>{{$t['average_rating']?:'—'}}</td></tr>@endforeach</tbody></table></div>
