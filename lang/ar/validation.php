@@ -1,0 +1,43 @@
+<?php
+
+return [
+    'required' => 'حقل :attribute مطلوب.',
+    'email' => 'يجب أن يكون :attribute بريداً إلكترونياً صالحاً.',
+    'string' => 'يجب أن يكون :attribute نصاً.',
+    'numeric' => 'يجب أن يكون :attribute رقماً.',
+    'integer' => 'يجب أن يكون :attribute عدداً صحيحاً.',
+    'confirmed' => 'تأكيد :attribute غير مطابق.',
+    'current_password' => 'كلمة المرور الحالية غير صحيحة.',
+    'unique' => 'قيمة :attribute مستخدمة بالفعل.',
+    'exists' => 'القيمة المحددة لحقل :attribute غير صالحة.',
+    'in' => 'القيمة المحددة لحقل :attribute غير صالحة.',
+    'date' => 'يجب أن يكون :attribute تاريخاً صالحاً.',
+    'date_format' => 'يجب أن يطابق :attribute التنسيق :format.',
+    'after' => 'يجب أن يكون :attribute بعد :date.',
+    'after_or_equal' => 'يجب أن يكون :attribute في أو بعد :date.',
+    'file' => 'يجب أن يكون :attribute ملفاً.',
+    'mimes' => 'يجب أن يكون :attribute ملفاً من نوع: :values.',
+    'uploaded' => 'تعذر رفع :attribute.',
+    'max' => [
+        'string' => 'يجب ألا يتجاوز :attribute عدد :max حرفاً.',
+        'numeric' => 'يجب ألا يتجاوز :attribute القيمة :max.',
+        'file' => 'يجب ألا يتجاوز حجم :attribute مقدار :max كيلوبايت.',
+    ],
+    'min' => [
+        'string' => 'يجب ألا يقل :attribute عن :min أحرف.',
+        'numeric' => 'يجب ألا يقل :attribute عن :min.',
+    ],
+    'between' => ['numeric' => 'يجب أن يكون :attribute بين :min و:max.'],
+    'attributes' => [
+        'name' => 'الاسم', 'email' => 'البريد الإلكتروني', 'phone' => 'رقم الهاتف',
+        'password' => 'كلمة المرور', 'current_password' => 'كلمة المرور الحالية',
+        'role' => 'الدور', 'subject' => 'المادة', 'grade' => 'الصف',
+        'teacher_id' => 'المعلم', 'supervisor_id' => 'المشرف', 'title' => 'العنوان',
+        'content' => 'المحتوى', 'comments' => 'التعليقات', 'score' => 'الدرجة',
+        'rating' => 'التقدير', 'day' => 'اليوم', 'start_time' => 'وقت البداية',
+        'end_time' => 'وقت النهاية', 'classroom' => 'القاعة', 'file' => 'الملف',
+        'attachment' => 'المرفق', 'description' => 'الوصف', 'material_type' => 'نوع المادة التعليمية',
+        'report_type' => 'نوع التقرير', 'period' => 'الفترة', 'date_from' => 'تاريخ البداية',
+        'date_to' => 'تاريخ النهاية', 'locale' => 'اللغة',
+    ],
+];

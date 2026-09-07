@@ -80,6 +80,20 @@ body.dark-mode .dashboard-shell .primary{
 
 /* Apply the theme to shared controls and role-specific dashboard colors. */
 body{color-scheme:light}
+.language-switch{margin:0;background:transparent}
+th,td,.unread button{text-align:start}
+.pagehead .actions .primary{margin-left:0;margin-inline-start:8px}
+[dir="rtl"] nav em{float:left}
+input[type="email"],input[type="tel"],input[type="time"]{direction:ltr;text-align:start}
+[dir="rtl"] .header-title{align-items:flex-start}
+@media(max-width:900px){
+    [dir="rtl"] aside{right:0;transform:translateX(100%)}
+    [dir="rtl"] aside.open{transform:none}
+}
+@media(max-width:600px){
+    header{height:auto;min-height:72px;flex-wrap:wrap;gap:10px;padding-block:12px}
+    .header-actions{flex-wrap:wrap}
+}
 body.dark-mode{
     color-scheme:dark;
     --ink:var(--app-text);

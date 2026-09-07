@@ -1,70 +1,71 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>@yield('title','AFHM English Program')</title>
+	<title>@yield('title',__('AFHM English Program'))</title>
 	@vite(['resources/css/app.css','resources/js/app.js'])
 	@stack('head')
 </head>
 <body class="role-{{ auth()->user()->role }}">
 	<div class="shell">
-		<aside id="sidebar" aria-label="Main navigation">
+		<aside id="sidebar" aria-label="{{ __('Main navigation') }}">
 			<a class="brand" href="{{ route(auth()->user()->role.'.dashboard') }}">
 				<span>AF</span>
-				<b>AFHM English Program</b>
+				<b>{{ __('AFHM English Program') }}</b>
 			</a>
 
 			<nav>
-				<a href="{{ route(auth()->user()->role.'.dashboard') }}">Dashboard</a>
+				<a href="{{ route(auth()->user()->role.'.dashboard') }}">{{ __('Dashboard') }}</a>
 
 				@if(auth()->user()->role === 'admin')
-					<a href="{{ route('admin.users.index') }}">Users</a>
-					<a href="{{ route('admin.assignments.edit') }}">Assign Supervisor</a>
-					<a href="{{ route('admin.timetables.index') }}">Timetables</a>
+					<a href="{{ route('admin.users.index') }}">{{ __('Users') }}</a>
+					<a href="{{ route('admin.assignments.edit') }}">{{ __('Assign Supervisor') }}</a>
+					<a href="{{ route('admin.timetables.index') }}">{{ __('Timetables') }}</a>
 				@elseif(auth()->user()->role === 'teacher')
-					<a href="{{ route('teacher.timetable') }}">My Timetable</a>
-					<a href="{{ route('teacher.reports.create') }}">Submit Report</a>
+					<a href="{{ route('teacher.timetable') }}">{{ __('My Timetable') }}</a>
+					<a href="{{ route('teacher.reports.create') }}">{{ __('Submit Report') }}</a>
 				@elseif(auth()->user()->role === 'supervisor')
-					<a href="{{ route('supervisor.teachers.index') }}">Assigned Teachers</a>
+					<a href="{{ route('supervisor.teachers.index') }}">{{ __('Assigned Teachers') }}</a>
 				@endif
 
-				<a href="{{ route('reports.index') }}">Teaching Reports</a>
-				<a href="{{ route('materials.index') }}">Materials</a>
+				<a href="{{ route('reports.index') }}">{{ __('Teaching Reports') }}</a>
+				<a href="{{ route('materials.index') }}">{{ __('Materials') }}</a>
 
 				@if(auth()->user()->hasRole('admin','school_manager'))
-					<a href="{{ route('performance.index') }}">Performance</a>
+					<a href="{{ route('performance.index') }}">{{ __('Performance') }}</a>
 				@endif
 
-				<a href="{{ route('notifications.index') }}">Notifications
+				<a href="{{ route('notifications.index') }}">{{ __('Notifications') }}
 					@if(auth()->user()->unreadNotifications()->count())
 						<em>{{ auth()->user()->unreadNotifications()->count() }}</em>
 					@endif
 				</a>
-				<a href="{{ route('profile.edit') }}">Profile</a>
+				<a href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
 			</nav>
 		</aside>
 
 		<main>
 			<header>
 				<div class="header-left">
-					<button id="menu" aria-label="Toggle menu">☰</button>
+					<button id="menu" aria-label="{{ __('Toggle menu') }}">☰</button>
 
 					<div class="header-title">
-						<small>AFHM English Department</small>
+						<small>{{ __('AFHM English Department') }}</small>
 						<strong>{{ auth()->user()->name }}</strong>
 					</div>
 				</div>
 
 				<div class="header-actions">
-					<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+					@include('partials.language-switch')
+					<button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ __('Switch to dark mode') }}">
 						<span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-						<span class="theme-toggle__text">Dark</span>
+						<span class="theme-toggle__text">{{ __('Dark') }}</span>
 					</button>
 
 					<form method="POST" action="{{ route('logout') }}">
 						@csrf
-						<button class="link" aria-label="Sign out">Sign out</button>
+						<button class="link" aria-label="{{ __('Sign out') }}">{{ __('Sign out') }}</button>
 					</form>
 				</div>
 			</header>
@@ -85,9 +86,9 @@
 						root.classList.toggle('dark-mode', isDark);
 
 						if (!toggle) return;
-						toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+						toggle.setAttribute('aria-label', isDark ? @json(__('Switch to light mode')) : @json(__('Switch to dark mode')));
 						toggle.querySelector('.theme-toggle__icon').textContent = isDark ? '☀️' : '🌙';
-						toggle.querySelector('.theme-toggle__text').textContent = isDark ? 'Light' : 'Dark';
+						toggle.querySelector('.theme-toggle__text').textContent = isDark ? @json(__('Light')) : @json(__('Dark'));
 					};
 
 					applyTheme(saved || 'light');
@@ -108,15 +109,15 @@
 
 			<section class="content">
 				@if(session('success'))
-					<div class="alert success">{{ session('success') }}</div>
+					<div class="alert success">{{ __(session('success')) }}</div>
 				@endif
 
 				@if($errors->any())
 					<div class="alert error">
-						<b>Please correct the following:</b>
+						<b>{{ __('Please correct the following:') }}</b>
 						<ul>
 							@foreach($errors->all() as $e)
-								<li>{{ $e }}</li>
+								<li>{{ __($e) }}</li>
 							@endforeach
 						</ul>
 					</div>

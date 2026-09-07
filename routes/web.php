@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AssignmentController,AuthController,DashboardController,MaterialController,NotificationController,PerformanceController,ProfileController,SupervisionController,TeachingReportController,TimetableController,UserController};
 
 Route::redirect('/','/login');
+Route::post('/language', function (\Illuminate\Http\Request $request) {
+    $data = $request->validate(['locale' => ['required', 'in:en,ar']]);
+
+    return back(303)->withCookie(cookie()->forever('afhm_locale', $data['locale']));
+})->name('language.update');
 Route::middleware('guest')->group(function(){Route::get('/login',[AuthController::class,'create'])->name('login');Route::post('/login',[AuthController::class,'store'])->name('login.store');});
 Route::middleware('auth')->group(function(){
  Route::post('/logout',[AuthController::class,'destroy'])->name('logout');
