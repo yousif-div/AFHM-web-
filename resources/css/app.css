@@ -117,8 +117,19 @@ body.dark-mode .dashboard-shell.role-school-manager{
     --dashboard-accent-soft:#191970;
     --dashboard-accent-strong:#ccccf5;
 }
-body.dark-mode .dashboard-shell.role-supervisor{
+body.dark-mode .dashboard-shell.role-supervisor,
+body.dark-mode .dashboard-shell.role-teacher{
     --dashboard-accent:#b0b0b0;
     --dashboard-accent-soft:#333333;
     --dashboard-accent-strong:#d0d0d0;
+}
+
+.dashboard-shell.role-teacher{
+    --dashboard-accent:#6b6b6b;
+    --dashboard-accent-soft:#f3f3f3;
+    --dashboard-accent-strong:#4b4b4b;
+}
+body.dark-mode .dashboard-shell.role-teacher .primary{
+    background:var(--dashboard-accent);
+    border-color:var(--dashboard-accent);
 }
