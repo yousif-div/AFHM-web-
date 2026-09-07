@@ -77,3 +77,22 @@ body.dark-mode .dashboard-shell .primary{
 .role-admin aside,
 .role-school-manager aside,
 .role-supervisor aside{transition:background-color .2s ease}
+
+/* Apply the theme to shared controls and role-specific dashboard colors. */
+body{color-scheme:light}
+body.dark-mode{
+    color-scheme:dark;
+    --ink:var(--app-text);
+    --muted:var(--app-muted);
+    --line:var(--app-border);
+    --pale:var(--app-surface-alt);
+}
+body.dark-mode aside{background:var(--app-sidebar);color:var(--app-sidebar-text)}
+body.dark-mode nav a:hover{background:var(--app-sidebar-hover)}
+th{background:var(--app-surface-alt)}
+body.dark-mode button:not(.primary):not(.link){background:var(--app-surface);color:var(--app-text);border-color:var(--app-border)}
+body.dark-mode .dashboard-shell{
+    --dashboard-accent:var(--app-primary);
+    --dashboard-accent-soft:#153526;
+    --dashboard-accent-strong:var(--app-primary-strong);
+}

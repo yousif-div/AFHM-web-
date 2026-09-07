@@ -57,9 +57,9 @@
 				</div>
 
 				<div class="header-actions">
-					<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
-						<span class="theme-toggle__icon">☀️</span>
-						<span class="theme-toggle__text">Light</span>
+					<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+						<span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+						<span class="theme-toggle__text">Dark</span>
 					</button>
 
 					<form method="POST" action="{{ route('logout') }}">
@@ -73,7 +73,12 @@
 				(function () {
 					const root = document.body;
 					const toggle = document.getElementById('theme-toggle');
-					const saved = localStorage.getItem('afhm-theme');
+					let saved = 'light';
+					try {
+						saved = localStorage.getItem('afhm-theme') || 'light';
+					} catch {
+						// Switching still works when browser storage is unavailable.
+					}
 
 					const applyTheme = (mode) => {
 						const isDark = mode === 'dark';
@@ -81,8 +86,8 @@
 
 						if (!toggle) return;
 						toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-						toggle.querySelector('.theme-toggle__icon').textContent = isDark ? '🌙' : '☀️';
-						toggle.querySelector('.theme-toggle__text').textContent = isDark ? 'Dark' : 'Light';
+						toggle.querySelector('.theme-toggle__icon').textContent = isDark ? '☀️' : '🌙';
+						toggle.querySelector('.theme-toggle__text').textContent = isDark ? 'Light' : 'Dark';
 					};
 
 					applyTheme(saved || 'light');
@@ -90,8 +95,12 @@
 					if (toggle) {
 						toggle.addEventListener('click', function () {
 							const nextMode = root.classList.contains('dark-mode') ? 'light' : 'dark';
-							localStorage.setItem('afhm-theme', nextMode);
 							applyTheme(nextMode);
+							try {
+								localStorage.setItem('afhm-theme', nextMode);
+							} catch {
+								// Keep the selected theme even if it cannot be saved.
+							}
 						});
 					}
 				})();
