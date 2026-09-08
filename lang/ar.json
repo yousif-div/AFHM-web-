@@ -241,5 +241,6 @@
   "Notifications marked as read.": "تم تحديد الإشعارات كمقروءة.",
   "Invalid email or password.": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
   "Account inactive. Please contact the administrator.": "الحساب غير نشط. يرجى التواصل مع المسؤول.",
-  "Deactivate accounts with historical records instead of deleting them.": "يرجى إلغاء تنشيط الحسابات التي تحتوي على سجلات سابقة بدلاً من حذفها."
+  "Deactivate accounts with historical records instead of deleting them.": "يرجى إلغاء تنشيط الحسابات التي تحتوي على سجلات سابقة بدلاً من حذفها.",
+  "This teacher is already assigned to a supervisor.": "هذا المعلم مسند بالفعل إلى مشرف."
 }
